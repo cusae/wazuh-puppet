@@ -18,6 +18,8 @@ class wazuh::indexer (
   $indexer_security_init_lockfile = '/var/tmp/indexer-security-init.lock',
   $full_indexer_reinstall = false, # Change to true when whant a full reinstall of Wazuh indexer
 
+  $indexer_path_repo = '"/mnt/snapshots"',
+
   $indexer_ip = 'localhost',
   $indexer_port = '9200',
   $indexer_discovery_hosts = [], # Empty array for single-node configuration

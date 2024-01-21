@@ -15,6 +15,8 @@ node.max_local_storage_nodes: "<%= @indexer_node_max_local_storage_nodes %>"
 path.data: "<%= @indexer_path_data %>"
 path.logs: "<%= @indexer_path_logs %>"
 
+path.repo: [<%= @indexer_path_repo %>]
+
 plugins.security.ssl.http.pemcert_filepath: <%= @indexer_path_certs %>/indexer.pem
 plugins.security.ssl.http.pemkey_filepath: <%= @indexer_path_certs %>/indexer-key.pem
 plugins.security.ssl.http.pemtrustedcas_filepath: <%= @indexer_path_certs %>/root-ca.pem
