@@ -20,6 +20,8 @@ class wazuh::dashboard (
   $dashboard_user = 'kibanaserver',
   $dashboard_password = 'kibanaserver',
 
+  $dashboard_multitenancy = 'false',
+
   $dashboard_wazuh_api_credentials = [
     {
       'id'       => 'default',
