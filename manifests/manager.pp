@@ -16,8 +16,8 @@ class wazuh::manager (
       $ossec_logall_json                = $wazuh::params_manager::ossec_logall_json,
       Boolean $ossec_emailnotification  = $wazuh::params_manager::ossec_emailnotification,
       Array $ossec_emailto              = $wazuh::params_manager::ossec_emailto,
-      String $ossec_smtp_server         = $wazuh::params_manager::ossec_smtp_server,
-      String $ossec_emailfrom           = $wazuh::params_manager::ossec_emailfrom,
+      Variant[String, Undef] $ossec_smtp_server = $wazuh::params_manager::ossec_smtp_server,
+      Variant[String, Undef] $ossec_emailfrom   = $wazuh::params_manager::ossec_emailfrom,
       $ossec_email_maxperhour           = $wazuh::params_manager::ossec_email_maxperhour,
       $ossec_email_log_source           = $wazuh::params_manager::ossec_email_log_source,
       $ossec_email_idsname              = $wazuh::params_manager::ossec_email_idsname,
@@ -252,9 +252,9 @@ class wazuh::manager (
       Array $rule_exclude                   = $wazuh::params_manager::rule_exclude,
       $shared_agent_template                = $wazuh::params_manager::shared_agent_template,
 
-      Boolean $wazuh_manager_verify_manager_ssl = $wazuh::params_manager::wazuh_manager_verify_manager_ssl,
-      String $wazuh_manager_server_crt          = $wazuh::params_manager::wazuh_manager_server_crt,
-      String $wazuh_manager_server_key          = $wazuh::params_manager::wazuh_manager_server_key,
+      Boolean $wazuh_manager_verify_manager_ssl        = $wazuh::params_manager::wazuh_manager_verify_manager_ssl,
+      Variant[String, Undef] $wazuh_manager_server_crt = $wazuh::params_manager::wazuh_manager_server_crt,
+      Variant[String, Undef] $wazuh_manager_server_key = $wazuh::params_manager::wazuh_manager_server_key,
 
       $ossec_local_files                    = $::wazuh::params_manager::default_local_files,
 

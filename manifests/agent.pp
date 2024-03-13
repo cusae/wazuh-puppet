@@ -5,25 +5,25 @@ class wazuh::agent (
 
   # Versioning and package names
 
-  $agent_package_version             = $wazuh::params_agent::agent_package_version,
-  $agent_package_revision            = $wazuh::params_agent::agent_package_revision,
-  String $agent_package_name         = $wazuh::params_agent::agent_package_name,
-  String $agent_service_name         = $wazuh::params_agent::agent_service_name,
-  $agent_service_ensure              = $wazuh::params_agent::agent_service_ensure,
-  $agent_msi_download_location       = $wazuh::params_agent::agent_msi_download_location,
+  $agent_package_version                     = $wazuh::params_agent::agent_package_version,
+  $agent_package_revision                    = $wazuh::params_agent::agent_package_revision,
+  Variant[String, Undef] $agent_package_name = $wazuh::params_agent::agent_package_name,
+  Variant[String, Undef] $agent_service_name = $wazuh::params_agent::agent_service_name,
+  $agent_service_ensure                      = $wazuh::params_agent::agent_service_ensure,
+  $agent_msi_download_location               = $wazuh::params_agent::agent_msi_download_location,
 
   # Authd registration options
-  $manage_client_keys                = $wazuh::params_agent::manage_client_keys,
-  String agent_name                  = $wazuh::params_agent::agent_name,
-  String $agent_group                = $wazuh::params_agent::agent_group,
-  $agent_address                     = $wazuh::params_agent::agent_address,
-  String $wazuh_agent_cert           = $wazuh::params_agent::wazuh_agent_cert,
-  String $wazuh_agent_key            = $wazuh::params_agent::wazuh_agent_key,
-  String $wazuh_agent_cert_path      = $wazuh::params_agent::wazuh_agent_cert_path,
-  String $wazuh_agent_key_path       = $wazuh::params_agent::wazuh_agent_key_path,
-  $agent_auth_password               = $wazuh::params_agent::agent_auth_password,
-  String $wazuh_manager_root_ca_pem  = $wazuh::params_agent::wazuh_manager_root_ca_pem,
-  $wazuh_manager_root_ca_pem_path    = $wazuh::params_agent::wazuh_manager_root_ca_pem_path,
+  $manage_client_keys                                = $wazuh::params_agent::manage_client_keys,
+  Variant[String, Undef] $agent_name                 = $wazuh::params_agent::agent_name,
+  Variant[String, Undef] $agent_group                = $wazuh::params_agent::agent_group,
+  $agent_address                                     = $wazuh::params_agent::agent_address,
+  Variant[String, Undef] $wazuh_agent_cert           = $wazuh::params_agent::wazuh_agent_cert,
+  Variant[String, Undef] $wazuh_agent_key            = $wazuh::params_agent::wazuh_agent_key,
+  Variant[String, Undef] $wazuh_agent_cert_path      = $wazuh::params_agent::wazuh_agent_cert_path,
+  Variant[String, Undef] $wazuh_agent_key_path       = $wazuh::params_agent::wazuh_agent_key_path,
+  $agent_auth_password                               = $wazuh::params_agent::agent_auth_password,
+  Variant[String, Undef] $wazuh_manager_root_ca_pem  = $wazuh::params_agent::wazuh_manager_root_ca_pem,
+  $wazuh_manager_root_ca_pem_path                    = $wazuh::params_agent::wazuh_manager_root_ca_pem_path,
 
   ## ossec.conf generation parameters
   # Generation variables
@@ -287,7 +287,7 @@ class wazuh::agent (
 
       # We dont need to pin the package version on Windows since we install if from the right MSI.
       -> package { $agent_package_name:
-        ensure          => "${agent_package_version}",
+        ensure          => $agent_package_version,
         provider        => 'windows',
         source          => "${download_path}\\wazuh-agent-${agent_package_version}-${agent_package_revision}.msi",
         install_options => [
