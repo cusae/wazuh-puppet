@@ -639,8 +639,8 @@ class wazuh::manager (
   }
   if($configure_indexer == true){
     concat::fragment {
-      'ossec.conf_inexer':
-        order   => 100,
+      'ossec.conf_indexer':
+        order   => 95,
         target  => 'manager_ossec.conf',
         content => template($ossec_indexer_template);
     }
