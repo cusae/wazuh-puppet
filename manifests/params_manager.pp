@@ -71,6 +71,7 @@ class wazuh::params_manager {
       $ossec_integration_template                      = 'wazuh/fragments/_integration.erb'
       $ossec_active_response_template                  = 'wazuh/fragments/_default_activeresponse.erb'
       $ossec_syslog_output_template                    = 'wazuh/fragments/_syslog_output.erb'
+      $ossec_indexer_template                          = 'wazuh/fragments/_indexer.erb'
 
       ## Rootcheck
 
