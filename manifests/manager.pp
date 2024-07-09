@@ -50,6 +50,7 @@ class wazuh::manager (
       $configure_cluster                    = $wazuh::params_manager::configure_cluster,
       $configure_integration                = $wazuh::params_manager::configure_integration,
       $configure_active_response            = $wazuh::params_manager::configure_active_response,
+      $configure_indexer                    = $wazuh::params_manager::configure_indexer,
 
     # ossec.conf templates paths
       $ossec_manager_template                       = $wazuh::params_manager::ossec_manager_template,
@@ -70,6 +71,7 @@ class wazuh::manager (
       $ossec_integration_template                   = $wazuh::params_manager::ossec_integration_template,
       $ossec_active_response_template               = $wazuh::params_manager::ossec_active_response_template,
       $ossec_syslog_output_template                 = $wazuh::params_manager::ossec_syslog_output_template,
+      $ossec_indexer_template                       = $wazuh::params_manager::ossec_indexer_template,
 
       # active-response
       $ossec_active_response_command                =  $wazuh::params_manager::active_response_command,
@@ -274,6 +276,13 @@ class wazuh::manager (
 
       # Integration
       $ossec_integration                    = $wazuh::params_manager::ossec_integration,
+
+      # Indexer
+      $indexer_enabled                = $wazuh::params_manager::indexer_enabled,
+      $indexer_host                   = $wazuh::params_manager::indexer_host,
+      $indexer_ca                     = $wazuh::params_manager::indexer_ca,
+      $indexer_certificate            = $wazuh::params_manager::indexer_certificate,
+      $indexer_key                    = $wazuh::params_manager::indexer_key,
 
       #----- End of ossec.conf parameters -------
 
@@ -626,6 +635,14 @@ class wazuh::manager (
       active_response_timeout            => $ossec_active_response_timeout,
       active_response_repeated_offenders => $ossec_active_response_repeated_offenders,
       order_arg                          => 90
+    }
+  }
+  if($configure_indexer == true){
+    concat::fragment {
+      'ossec.conf_inexer':
+        order   => 100,
+        target  => 'manager_ossec.conf',
+        content => template($ossec_indexer_template);
     }
   }
   concat::fragment {

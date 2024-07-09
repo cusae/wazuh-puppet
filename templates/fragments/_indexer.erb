@@ -1,0 +1,25 @@
+
+
+<indexer>
+  <% if @indexer_enabled -%>
+  <enabled><%= @indexer_enabled %></enabled>
+  <%- end -%>
+  <hosts>
+    <% if @indexer_host -%>
+    <host><%= @indexer_host %></host>
+    <%- end -%>
+  </hosts>
+  <ssl>
+    <certificate_authorities>
+      <% if @indexer_ca -%>
+      <ca><%= @indexer_ca %></ca>
+      <%- end -%>
+    </certificate_authorities>
+    <% if @indexer_certificate -%>
+    <certificate><%= @indexer_certificate %></certificate>
+    <%- end -%>
+    <% if @indexer_key -%>
+    <key><%= @indexer_key %></key>
+    <%- end -%>
+  </ssl>
+</indexer>
