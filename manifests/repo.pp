@@ -19,12 +19,13 @@ class wazuh::repo (
         /(jessie|wheezy|stretch|buster|bullseye|bookworm|trixie|sid|precise|trusty|vivid|wily|xenial|yakketi|bionic|focal|groovy|jammy)/: {
 
           apt::source { 'wazuh':
-            ensure   => present,
-            comment  => 'This is the WAZUH Ubuntu repository',
-            location => 'https://packages.wazuh.com/4.x/apt',
-            release  => 'stable',
-            repos    => 'main',
-            include  => {
+            ensure        => present,
+            comment       => 'This is the WAZUH Ubuntu repository',
+            source_format => 'sources',
+            location      => 'https://packages.wazuh.com/4.x/apt',
+            release       => 'stable',
+            repos         => 'main',
+            include       => {
               'src' => false,
               'deb' => true,
             },
